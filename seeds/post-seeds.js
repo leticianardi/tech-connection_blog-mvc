@@ -24,9 +24,13 @@ const postdata = [
     user_id: 2
   },
   {
-    post_title: '',
-    post_content: ``,
-    source: '',
+    post_title:
+      "Meta's VR division is reportedly under investigation by the FTC",
+    post_content: `Meta's VR division is under investigation by the Federal Trade Commission and multiple US states, Bloomberg reported Friday.
+
+    The FTC and an undisclosed number of US states led by New York have been questioning third-party Oculus app developers over the last few months, sources with knowledge of the matter told Bloomberg.`,
+    source:
+      'https://www.businessinsider.com/meta-oculus-vr-division-antitrust-investigation-ftc-report-says-2022-1?utm_source=reddit.com',
     user_id: 3
   },
   {

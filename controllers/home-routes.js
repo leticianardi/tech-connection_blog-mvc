@@ -1,41 +1,41 @@
-const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
-const withAuth = require("../utils/auth");
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
-router.get("/", (req, res) => {
-  res.render("login");
+router.get('/', (req, res) => {
+  res.render('login');
 });
 
-router.get("/login", (req, res) => {
-  res.render("login");
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
-router.get("/logout", (req, res) => {
-  res.render("logout");
+router.get('/logout', (req, res) => {
+  res.render('logout');
 });
 
-router.get("/homepage", (req, res) => {
+router.get('/homepage', (req, res) => {
   Post.findAll({
-    attributes: ["id", "post_title", "post_content", "created_at"],
+    attributes: ['id', 'post_title', 'post_content', 'created_at'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ["username"],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,
-        attributes: ["username"],
-      },
-    ],
+        attributes: ['username']
+      }
+    ]
   })
-    .then((posts) => {
-      const posts = posts.map((post) => post.get({ plain: true }));
-      res.render("homepage", { posts, loggedIn: req.session.loggedIn });
+    .then((postsData) => {
+      const posts = postsData.map((post) => post.get({ plain: true }));
+      res.render('homepage', { posts, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
@@ -43,36 +43,36 @@ router.get("/homepage", (req, res) => {
     });
 });
 
-router.get("/post/:id", (req, res) => {
+router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
-    attributes: ["id", "post_title", "post_content", "created_at"],
+    attributes: ['id', 'post_title', 'post_content', 'created_at'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ["username"],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,
-        attributes: ["username"],
-      },
-    ],
+        attributes: ['username']
+      }
+    ]
   })
-    .then((posts) => {
-      if (!posts) {
-        res.status(404).json({ message: "No post found with this id" });
+    .then((postsData) => {
+      if (!postsData) {
+        res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      const post = posts.get({ plain: true });
-      post.post_content = post.post_content.split("\n");
+      const post = postsData.get({ plain: true });
+      post.recipe_body = post.recipe_body.split('\n');
 
-      res.render("single-post", { post, loggedIn: req.session.loggedIn });
+      res.render('single-post', { post, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);

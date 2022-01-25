@@ -1,27 +1,27 @@
-const router = require("express").Router();
-const { Post, User, Comment } = require("../../models");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // get all posts
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ["id", "post_title", "post_content", "source", "created_at"],
+    attributes: ['id', 'post_title', 'post_content', 'source', 'created_at'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ["username"],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,
-        attributes: ["username"],
-      },
-    ],
+        attributes: ['username']
+      }
+    ]
   })
-    .then((posts) => res.json(posts))
+    .then((postsData) => res.json(postsData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -29,33 +29,33 @@ router.get("/", (req, res) => {
 });
 
 // find one post by its id
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
-    attributes: ["id", "post_title", "post_content", "source", "created_at"],
+    attributes: ['id', 'post_title', 'post_content', 'source', 'created_at'],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ["username"],
-        },
+          attributes: ['username']
+        }
       },
       {
         model: User,
-        attributes: ["id", "username"],
-      },
-    ],
+        attributes: ['id', 'username']
+      }
+    ]
   })
-    .then((posts) => {
-      if (!posts) {
-        res.status(404).json({ message: "No post found with this id." });
+    .then((postsData) => {
+      if (!postsData) {
+        res.status(404).json({ message: 'No post found with this id.' });
         return;
       }
-      res.json(posts);
+      res.json(postsData);
     })
     .catch((err) => {
       console.log(err);
@@ -64,13 +64,13 @@ router.get("/:id", (req, res) => {
 });
 
 // new post
-router.post("/", withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Post.create({
     post_title: req.body.post_title,
     post_content: req.body.post_content,
-    user_id: req.session.user_id,
+    user_id: req.session.user_id
   })
-    .then((posts) => res.json(posts))
+    .then((postsData) => res.json(postsData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -78,24 +78,24 @@ router.post("/", withAuth, (req, res) => {
 });
 
 // update a post
-router.put("/:id", withAuth, (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
       post_title: req.body.post_title,
-      post_content: req.body.post_content,
+      post_content: req.body.post_content
     },
     {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     }
   )
-    .then((posts) => {
-      if (!posts[0]) {
-        res.status(404).json({ message: "No post has been found" });
+    .then((postsData) => {
+      if (!postsData[0]) {
+        res.status(404).json({ message: 'No post has been found' });
         return;
       }
-      res.json(posts);
+      res.json(postsData);
     })
     .catch((err) => {
       console.log(err);
@@ -103,19 +103,19 @@ router.put("/:id", withAuth, (req, res) => {
     });
 });
 
-router.delete("/:id", withAuth, (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   //Deletes a post by its `id` value
   Post.destroy({
     where: {
-      id: req.params.id,
-    },
+      id: req.params.id
+    }
   })
-    .then((posts) => {
-      if (!posts) {
-        res.status(404).json({ message: "No post has been found" });
+    .then((postsData) => {
+      if (!postsData) {
+        res.status(404).json({ message: 'No post has been found' });
         return;
       }
-      res.json(posts);
+      res.json(postsData);
     })
     .catch((err) => {
       console.log(err);

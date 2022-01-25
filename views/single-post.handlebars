@@ -1,0 +1,37 @@
+<article class='singlePost'>
+
+  <div class='singlePostTitle'>
+    <a href='/post/{{post.id}}'>{{post.post_title}}</a>
+  </div>
+
+  <div class='singlePostCreator'>
+    Posted by
+    {{post.user.username}}
+    on 
+    {{format_date post.created_at}}
+  </div>
+
+  <div class='postBody'>
+    {{#each post.post_content}}{{this}}<br />{{/each}}
+  </div>
+
+  {{#if loggedIn}}
+    <form class='comment-form'>
+      <div>
+        <textarea class='textarea-body' name='comment-body'></textarea>
+      </div>
+
+      <div>
+        <button class='comment-btn' type='submit'>Add Comment</button>
+      </div>
+    </form>
+  {{/if}}
+
+  <div class='comments'>
+    {{> comments post.comments}}
+  </div>
+</article>
+
+{{#if loggedIn}}
+  <script src='/js/comment.js'></script>
+{{/if}}

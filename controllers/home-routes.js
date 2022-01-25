@@ -4,7 +4,6 @@ const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-  console.log('error in the home routes maybe?');
   Post.findAll({
     attributes: ['id', 'post_title', 'post_content', 'created_at'],
     include: [
@@ -54,12 +53,12 @@ router.get('/post/:id', (req, res) => {
       }
     ]
   })
-    .then((postsData) => {
-      if (!postsData) {
+    .then((dbPostData) => {
+      if (!dbPostData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      const post = postsData.get({ plain: true });
+      const post = dbPostData.get({ plain: true });
       post.recipe_body = post.recipe_body.split('\n');
 
       res.render('single-post', { post, loggedIn: req.session.loggedIn });

@@ -4,24 +4,32 @@
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Tech Connection</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/style.css' />
   </head>
 
   <body>
     <div class='wrapper'>
 
       <header>
-        <h1>
-          <a href='/'>Tech Connection</a>
+        <h1 class='text-center page-title'>
+          <a href='/'>tech connection</a>
         </h1>
-        <nav>
+
+        <ul class='nav justify-content-end'>
           {{#if loggedIn}}
-            <a href='/dashboard'>dashboard</a>
-            <button id='logout' class='btn-no-style'>logout</button>
+            <li class='nav-item'>
+              <a href='/dashboard' class='nav-link'>dasboard</a>
+            </li>
+            <li class='nav-item'>
+              <a href='/logout' class='nav-link' id='logout'>logout</a>
+            </li>
           {{else}}
-            <a href='/login'>login</a>
+            <li class='nav-item'>
+              <a href='/login' class='nav-link'>login</a>
+            </li>
           {{/if}}
-        </nav>
+        </ul>
+
       </header>
 
       <main>
@@ -34,9 +42,7 @@
 
     </div>
 
-    {{#if loggedIn}}
-      <script src='/javascript/logout.js'></script>
-    {{/if}}
+    <script src='/js/logout.js'></script>
 
   </body>
 

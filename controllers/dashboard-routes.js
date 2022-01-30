@@ -40,11 +40,11 @@ router.get('/edit/:id', withAuth, (req, res) => {
 
 router.get('/delete', withAuth, (req, res) => {
   Post.findByPk(req.params.id, {
-    attributes: ['id', 'post_title', 'post_content', 'source', 'created_at'],
+    // attributes: ['id', 'post_title', 'post_content', 'source', 'created_at'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        // attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']

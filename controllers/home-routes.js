@@ -24,11 +24,11 @@ router.get('/post/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'post_title', 'post_content', 'created_at'],
+    // attributes: ['id', 'post_title', 'post_content', 'created_at'],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username']
@@ -46,7 +46,7 @@ router.get('/post/:id', (req, res) => {
         return;
       }
       const post = dbPostData.get({ plain: true });
-      post.recipe_body = post.recipe_body.split('\n');
+      post.post_content = post.post_content.split('\n');
 
       res.render('single-post', { post, loggedIn: req.session.loggedIn });
     })

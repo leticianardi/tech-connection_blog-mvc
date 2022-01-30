@@ -8,7 +8,7 @@
     Posted by
     {{post.user.username}}
     on 
-    {{format_date post.created_at}}
+    {{format_date post.createdAt}}
   </div>
 
   <div class='postBody'>
@@ -18,7 +18,7 @@
   {{#if loggedIn}}
     <form class='comment-form'>
       <div>
-        <textarea class='textarea-body' name='comment-body'></textarea>
+        <textarea class='textarea-body' name='comment-text'></textarea>
       </div>
 
       <div>

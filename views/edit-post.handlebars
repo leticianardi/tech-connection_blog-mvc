@@ -1,0 +1,44 @@
+<a href='/dashboard' class='bcktodash'> &larr; Back to dashboard</a>
+<article class='dashboardPage'>  
+  <h2>
+    Edit Post
+  </h2>
+
+  <form class='edit-post-form'>
+    <input type='hidden' name='post-id' value='{{post.id}}' />
+    <div>
+      <label for='post-title'>Your post title:</label>
+      <input
+        name='edit-post-title'
+        type='text'
+        id='edit-post-title'
+        value='{{post.post_title}}'
+      />
+    </div>
+    <div>
+       <label for='post-content'>Changed your mind?</label>
+      <textarea
+        name='edit-post-content'
+        type='text'
+        class='textarea-body'
+        id='edit-post-body'
+      />{{post.post_content}}</textarea>
+    </div>
+
+    <div>
+       <label for='source'>source</label>
+      <input
+        name='edit-source'
+        type='text'
+        class='textarea-body'
+        id='edit-source'
+      />{{post.source}}</textarea>
+    </div>
+
+    <button class='btn' type='submit'>Save Post</button>
+    <button type='button' class='delete-post-btn btn'>Delete Post</button>
+  </form>
+</article>
+
+<script src='/js/edit-post.js'></script>
+<script src='/js/delete-post.js'></script>

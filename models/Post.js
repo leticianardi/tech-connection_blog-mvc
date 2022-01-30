@@ -5,12 +5,12 @@ class Post extends Model {}
 
 Post.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   primaryKey: true,
+    //   autoIncrement: true
+    // },
     post_title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -21,24 +21,24 @@ Post.init(
     },
     source: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isURL: true
       }
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
     }
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'user',
+    //     key: 'id'
+    //   }
+    // }
   },
   {
-    sequelize,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'post'
+    sequelize
+    // freezeTableName: true,
+    // underscored: true,
+    // modelName: 'post'
   }
 );
 

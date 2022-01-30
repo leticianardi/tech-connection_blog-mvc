@@ -3,12 +3,25 @@
 
   <form class='new-post-form'>
     <div>
-      <label for='post-title'>Title</label>
-      <input type='text' id='post-title' name='post-title' />
+      <label for='post-title'>Title:</label>
+      <input
+        type='text'
+        name='new-post-title'
+        id='new-post-title'
+        name='post-title'
+      />
     </div>
     <div>
-      <label for='post-url'>Link</label>
-      <input id='post-url' name='post-url' />
+      <label for='source'>Source:</label>
+      <input id='source' name='source' />
+    </div>
+    <div>
+      <label for='post-content'>Content:</label>
+      <textarea
+        id='new-post-body'
+        name='new-post-body'
+        placeholder='What do you wanna share?'
+      ></textarea>
     </div>
     <button type='submit' class='btn'>Create</button>
   </form>
@@ -18,15 +31,16 @@
   <section>
     <h2>Your Posts</h2>
     <ol>
-      {{#each posts as |post|}}
-    <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
+      {{#each posts}}
+        <li>
+          <a href='/dashboard/edit/{{id}}' class='edit-link'><span
+            >{{post_title}}</span>
+            <span>{{format_date createdAt}}</span></a>
+        </li>
+      {{/each}}
     </ol>
   </section>
 {{/if}}
 
-{{!-- <script src='/js/add-post.js'></script> --}}
-{{!-- <script src='/js/delete-post.js'></script> --}}
+<script src='/js/add-post.js'></script>
+{{! <script src='/js/delete-post.js'></script> }}

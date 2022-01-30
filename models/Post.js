@@ -23,7 +23,7 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        isURL: true
+        isUrl: true
       }
     }
     // user_id: {
@@ -35,10 +35,10 @@ Post.init(
     // }
   },
   {
-    sequelize
-    // freezeTableName: true,
-    // underscored: true,
-    // modelName: 'post'
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'post'
   }
 );
 

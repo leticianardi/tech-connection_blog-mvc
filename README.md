@@ -26,6 +26,7 @@ Once the user signs up, they can create posts to share their ideas and discuss a
 - [Installing Packages](#Installing-Packages)
 - [Contributing and Questions](#Contributing-and-Questions)
 - [Deployed](#Deployed)
+- [Snapshots](#Snapshots)
 
 ## Installation
 
@@ -53,8 +54,16 @@ npm i express-handlebars mysql2 dotenv bcrypt express-session connect-session-se
 
 To contibute with this project or for questions, please contact the author:
 
-[Leticia Nardi](https://github.com/leticianardi) <br />
+[Leticia Nardi](https://github.com/leticianardi)
 
 ## Deployed
 
 You can visit the deployed application [here](https://spicy-bites.herokuapp.com/).
+
+## Snapshots
+
+<img src="./public/images/01.png" /> <br />
+
+<img src="./public/images/02.png" /> <br />
+
+<img src="./public/images/03.png" /> <br />

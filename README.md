@@ -51,7 +51,8 @@ npm i express-handlebars mysql2 dotenv bcrypt express-session connect-session-se
 
 ## Contributing and Questions
 
-To contibute with this project or for questions, please contact the author.
+To contibute with this project or for questions, please contact the author:
+
 [Leticia Nardi](https://github.com/leticianardi) <br />
 
 ## Deployed

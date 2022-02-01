@@ -37,7 +37,7 @@ You can clone this repository and run the command `npm i`. Create your .env file
 To set up your MySQL credentials, use the following exemple on your .env file.
 
 ```
-DB_NAME='recipes_db'
+DB_NAME='techblog_db'
 DB_USER='root'
 DB_PW='your-password'
 ```

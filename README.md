@@ -24,9 +24,7 @@ Once the user signs up, they can create posts to share their ideas and discuss a
 - [Installation](#Installation)
 - [Setting Up MySQL](#SettingUpMySQL)
 - [Installing Packages](#Installing-Packages)
-- [Contributing](#contributing)
-- [Collaborators](#Collaborators)
-- [Questions](#questions)
+- [Contributing and Questions](#Contributing-and-Questions)
 - [Deployed](#Deployed)
 
 ## Installation
@@ -51,6 +49,11 @@ To install all the required packages, run the following command:
 npm i express-handlebars mysql2 dotenv bcrypt express-session connect-session-sequelize bootstrap
 ```
 
-## Contributing
+## Contributing and Questions
 
-To contibute with this project, please contact one of the collaborators.
+To contibute with this project or for questions, please contact the author.
+[Leticia Nardi](https://github.com/leticianardi) <br />
+
+## Deployed
+
+You can visit the deployed application [here](https://spicy-bites.herokuapp.com/).

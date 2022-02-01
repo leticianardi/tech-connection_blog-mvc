@@ -1,30 +1,32 @@
-<article class='singlePost'>
+<article>
 
-  <div class='singlePostTitle'>
+  <div class='post-title'>
     <a href='/post/{{post.id}}'>{{post.post_title}}</a>
   </div>
 
-  <div class='singlePostCreator'>
+  <div class='post-creator'>
     Posted by
     {{post.user.username}}
     on 
     {{format_date post.createdAt}}
   </div>
 
-  <div class='postBody'>
+  <div class='post-body'>
     {{#each post.post_content}}{{this}}<br />{{/each}}
   </div>
 
   {{#if loggedIn}}
+  <div>
     <form class='comment-form'>
       <div>
         <textarea class='textarea-body' name='comment-text'></textarea>
       </div>
 
       <div>
-        <button class='comment-btn' type='submit'>Add Comment</button>
+        <button class='btn' type='submit'>Add Comment</button>
       </div>
     </form>
+  </div>
   {{/if}}
 
   <div class='comments'>

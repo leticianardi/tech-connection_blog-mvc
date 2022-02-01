@@ -4,43 +4,64 @@
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Tech Connection</title>
+    <link
+      rel='stylesheet'
+      href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+      integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+      crossorigin='anonymous'
+    />
     <link rel='stylesheet' href='/css/style.css' />
   </head>
 
   <body>
-    <div class='wrapper'>
 
-      <header>
-        <h1 class='text-center page-title'>
-          <a href='/'>tech connection</a>
-        </h1>
+    <header>
+      <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <a class='navbar-brand' href='/'>tech connection</a>
+        <button
+          class='navbar-toggler'
+          type='button'
+          data-toggle='collapse'
+          data-target='#navbarSupportedContent'
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+        >
+          <span class='navbar-toggler-icon'></span>
+        </button>
 
-        <ul class='nav justify-content-end'>
+        <div class='collapse navbar-collapse' id='navbarSupportedContent'>
           {{#if loggedIn}}
-            <li class='nav-item'>
-              <a href='/dashboard' class='nav-link'>dasboard</a>
-            </li>
-            <li class='nav-item'>
-              <a href='/logout' class='nav-link' id='logout'>logout</a>
-            </li>
-          {{else}}
-            <li class='nav-item'>
-              <a href='/login' class='nav-link'>login</a>
-            </li>
-          {{/if}}
-        </ul>
+            <ul class='navbar-nav mr-auto mt-2 mt-lg-0'>
+              <li class='nav-item'>
+                <a class='nav-link' href='/'>homepage</a>
+              </li>
+              <li class='nav-item'>
+                <a class='nav-link' href='/dashboard'>dashboard</a>
+              </li>
+              <li class='nav-item'>
+                <a class='nav-link' href='/login'>logout</a>
+              </li>
+            {{else}}
+              <li class='nav-item'>
+                <a class='nav-link disabled' href='/login'>login</a>
+              </li>
+            {{/if}}
+            </ul>
+        </div>
 
-      </header>
+      </nav>
+    </header>
 
-      <main>
+    <main>
+      <div>
         {{{body}}}
-      </main>
+      </div>
+    </main>
 
-      <footer>
-        Thanks for visiting!
-      </footer>
-
-    </div>
+    <footer class='navbar fixed-bottom'>
+      Tech Connection
+    </footer>
 
     <script src='/js/logout.js'></script>
 

@@ -7,7 +7,7 @@
   <form class='edit-post-form'>
     <input type='hidden' name='post-id' value='{{post.id}}' />
     <div>
-      <label for='post-title'>Your post title:</label>
+      <label for='post-title'>new title:</label>
       <input
         name='edit-post-title'
         type='text'
@@ -16,13 +16,15 @@
       />
     </div>
     <div>
-       <label for='post-content'>Changed your mind?</label>
+       <label for='post-content'>what has changed?</label>
+      <div>
       <textarea
         name='edit-post-content'
         type='text'
-        class='textarea-body'
+        class='post-body'
         id='edit-post-body'
       />{{post.post_content}}</textarea>
+      </div>
     </div>
 
     {{!-- <div>
